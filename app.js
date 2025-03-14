@@ -5,6 +5,8 @@ const app = express();
 const router = express.Router();
 const msgError404 = "Material no encontrado";
 const msgErrorSrv = "Error del servidor";
+const cors = require('cors')
+app.use(cors());
 router.get("/materials", async (req, res) => {
     const resposta = await MaterialModel.find({});
     res.send(resposta);
