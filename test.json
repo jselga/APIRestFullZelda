@@ -1,0 +1,52 @@
+[
+    {
+      "category": "monstruos",
+      "common_locations": [
+        "Cordillera de Gerudo",
+        "Desierto de Gerudo"
+      ],
+      "description": "Estos monstruos particularmente astutos se entierran en la arena o en la nieve y se disfrazan de cofres del tesoro. Cualquiera que se acerque a ellos es atacado. Los cofres del tesoro no son magnéticos, lo que prueba que en realidad forman parte de los cuerpos de estos monstruos.",
+      "drops": [
+        "Tentáculo de Octorok",
+        "Globo de Octo",
+        "Ojo de Octorok",
+        "Rupia verde",
+        "Rupia azul",
+        "Rupia roja",
+        "Rupia morada",
+        "Rupia plateada"
+      ],
+      "id_num": 96,
+      "image": "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/treasure_octorok/image",
+      "name": "Octorok del Tesoro"
+    },
+    {
+      "category": "monstruos",
+      "common_locations": [
+        "Campo de Hyrule",
+        "Cañón de Eldin"
+      ],
+      "description": "Estos monstruos hechiceros se pueden encontrar por todo Hyrule. Usan sus varas meteorológicas para lanzar bolas de fuego o invocar monstruos llameantes, y se sabe que elevan considerablemente la temperatura a su alrededor. El clima se normalizará una vez que el Wizzrobe sea derrotado.",
+      "drops": [],
+      "id_num": 100,
+      "image": "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/meteo_wizzrobe/image",
+      "name": "Meteo Wizzrobe"
+    },
+    {
+      "category": "monstruos",
+      "common_locations": [
+        "Campo de Hyrule",
+        "Este de Necluda"
+      ],
+      "description": "El patrón de vuelo impredecible de esta especie de murciélago nocturno puede hacer que luchar contra ellos sea una molestia, pero son lo suficientemente débiles como para caer con un solo golpe. A veces atacan en grupos, pero incluso entonces, pueden ser eliminados con un solo ataque.",
+      "drops": [
+        "Ala de Keese",
+        "Ojo de Keese"
+      ],
+      "id_num": 88,
+      "image": "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/keese/image",
+      "name": "Keese"
+    }
+  ]
+  
+  

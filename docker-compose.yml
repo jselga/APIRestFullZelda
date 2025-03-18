@@ -5,7 +5,7 @@ services:
     image: mongo:latest
     container_name: mongodb
     ports:
-      - "27018:27017"
+      - "MONGO_EXT_PORT:27017"
     volumes:
       - mongo_data:/data/db
       - ./backup:/backup
@@ -16,7 +16,7 @@ services:
   #   build: .
   #   container_name: backend
   #   ports:
-  #     - "5000:5000"
+  #     - "API_EXT_PORT:API_PORT"
   #   depends_on:
   #     - mongodb
   #   environment:
