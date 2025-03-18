@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./backup:/backup
+    command: ["/bin/bash", "-c", "mongod --bind_ip_all --fork --logpath /var/log/mongodb.log && mongorestore --db zelda_botw /backup/zelda_botw && tail -f /dev/null"]
+    restart: always
+
+  # backend:
+  #   build: .
+  #   container_name: backend
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - mongodb
+  #   environment:
+  #     MONGO_URI: mongodb://mongodb:27017/zelda_botw
+  #   restart: always
+
+volumes:
+  mongo_data:

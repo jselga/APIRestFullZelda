@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const url = "mongodb://localhost:27017/zelda_botw";
+const url = "mongodb://localhost:27018/zelda_botw";
 const  dbconnect = async() => {
     try {
         await mongoose.connect(url);
