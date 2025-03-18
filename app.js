@@ -1,3 +1,8 @@
+const fs = require("fs");
+const yaml = require("js-yaml");
+const swaggerUi = require("swagger-ui-express");
+
+
 const express = require('express');
 const dbconnect = require('./config');
 
@@ -6,6 +11,9 @@ const monstersRouter = require("./routes/monsters.js");
 const app = express();
 
 const cors = require('cors')
+
+const swaggerDocument = yaml.load(fs.readFileSync("./swagger.yaml", "utf8"));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors());
 app.use(express.json());
 
