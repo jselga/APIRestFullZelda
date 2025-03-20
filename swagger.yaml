@@ -1,20 +1,21 @@
 openapi: 3.0.0
 info:
   title: Zelda BotW API - Monstruos
-  description: API per gestionar els monstres de Zelda: Breath of the Wild.
+  description: "API per gestionar els monstres de Zelda: Breath of the Wild."
   version: 1.0.0
+
 servers:
   - url: http://localhost:3001
-    description: Servidor local de desenvolupament
+    description: "Servidor local de desenvolupament"
 
 paths:
   /monsters:
     get:
-      summary: Obtenir tots els monstres
-      description: Retorna una llista de tots els monstres disponibles a la base de dades.
+      summary: "Obtenir tots els monstres"
+      description: "Retorna una llista de tots els monstres disponibles a la base de dades."
       responses:
         "200":
-          description: Llista de monstres retornada amb èxit
+          description: "Llista de monstres retornada amb èxit"
           content:
             application/json:
               schema:
@@ -23,8 +24,8 @@ paths:
                   $ref: "#/components/schemas/Monster"
 
     post:
-      summary: Crear un nou monstre
-      description: Afegeix un nou monstre a la base de dades.
+      summary: "Crear un nou monstre"
+      description: "Afegeix un nou monstre a la base de dades."
       requestBody:
         required: true
         content:
@@ -33,39 +34,39 @@ paths:
               $ref: "#/components/schemas/Monster"
       responses:
         "201":
-          description: Monstre creat correctament
+          description: "Monstre creat correctament"
         "400":
-          description: Error en la petició
+          description: "Error en la petició"
 
   /monsters/{id_num}:
     get:
-      summary: Obtenir un monstre per ID
-      description: Retorna la informació d'un monstre específic basant-se en el seu `id_num`.
+      summary: "Obtenir un monstre per ID"
+      description: "Retorna la informació d'un monstre específic basant-se en el seu id_num."
       parameters:
         - name: id_num
           in: path
           required: true
-          description: ID del monstre a buscar
+          description: "ID del monstre a buscar"
           schema:
             type: integer
       responses:
         "200":
-          description: Monstre trobat
+          description: "Monstre trobat"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Monster"
         "404":
-          description: Monstre no trobat
+          description: "Monstre no trobat"
 
     put:
-      summary: Actualitzar un monstre per ID
-      description: Modifica la informació d'un monstre existent.
+      summary: "Actualitzar un monstre per ID"
+      description: "Modifica la informació d'un monstre existent."
       parameters:
         - name: id_num
           in: path
           required: true
-          description: ID del monstre a actualitzar
+          description: "ID del monstre a actualitzar"
           schema:
             type: integer
       requestBody:
@@ -76,25 +77,25 @@ paths:
               $ref: "#/components/schemas/Monster"
       responses:
         "200":
-          description: Monstre actualitzat correctament
+          description: "Monstre actualitzat correctament"
         "404":
-          description: Monstre no trobat
+          description: "Monstre no trobat"
 
     delete:
-      summary: Eliminar un monstre per ID
-      description: Elimina un monstre de la base de dades.
+      summary: "Eliminar un monstre per ID"
+      description: "Elimina un monstre de la base de dades."
       parameters:
         - name: id_num
           in: path
           required: true
-          description: ID del monstre a eliminar
+          description: "ID del monstre a eliminar"
           schema:
             type: integer
       responses:
         "200":
-          description: Monstre eliminat correctament
+          description: "Monstre eliminat correctament"
         "404":
-          description: Monstre no trobat
+          description: "Monstre no trobat"
 
 components:
   schemas:
@@ -106,10 +107,10 @@ components:
           example: 119
         name:
           type: string
-          example: Lizalfos Eléctrico
+          example: "Lizalfos Eléctrico"
         category:
           type: string
-          example: monstruos
+          example: "monstruos"
         common_locations:
           type: array
           items:
