@@ -32,7 +32,7 @@ router.get("/name/:name",async (req,res)=>{
     try {
         const nom = req.params.name.toLowerCase(); 
 
-        const resposta = await MaterialModel.findOne({ name: new RegExp(`^${nom}$`, "i") }); // Cerca insensible a majúscules
+        const resposta = await MaterialModel.findOne({ name: new RegExp(nom, "i") }); // Cerca insensible a majúscules
 
         if (!resposta) {
             return res.status(404).json({ message: msgError404 });

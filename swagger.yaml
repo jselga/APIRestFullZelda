@@ -1,7 +1,12 @@
 openapi: 3.0.0
 info:
-  title: Zelda BotW API - Monstruos
-  description: "API per gestionar els monstres de Zelda: Breath of the Wild."
+  title: Zelda BotW API Spanish Version
+  description: "API per gestionar els materials i monstres de Zelda: Breath of the Wild.<br>
+    Aquesta API permet realitzar operacions CRUD sobre els materials i monstres de Zelda: Breath of the Wild.<br>
+    Es tracta d'una API de practica per fer peticions asincrones amb JS i de pas tenir una API en la versió en espanyol de Zelda: Breath of the Wild.<br>
+    Esta basada en **[Hyrule Compendium API](https://gadhagod.github.io/Hyrule-Compendium-API/#/compendium-api)** by  Aarav Borthakur.\n
+    "
+     
   version: 1.0.0
 
 servers:
@@ -9,6 +14,113 @@ servers:
     description: "Servidor local de desenvolupament"
 
 paths:
+  /materials:
+    get:
+      summary: "Obtenir tots els materials"
+      description: "Retorna una llista de tots els materials disponibles a la base de dades."
+      responses:
+        "200":
+          description: "Llista de materials retornada amb èxit"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Material"
+
+    post:
+      summary: "Crear un nou material"
+      description: "Afegeix un nou material a la base de dades."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Material"
+      responses:
+        "201":
+          description: "Material creat correctament"
+        "400":
+          description: "Error en la petició"
+  
+  /materials/{id_num}:
+    get:
+      summary: "Obtenir un material per ID"
+      description: "Retorna la informació d'un material específic basant-se en el seu id_num."
+      parameters:
+        - name: id_num
+          in: path
+          required: true
+          description: "ID del material a buscar"
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "Material trobat"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Material"
+        "404":
+          description: "Material no trobat"
+
+    put:
+      summary: "Actualitzar un material per ID"
+      description: "Modifica la informació d'un material existent."
+      parameters:
+        - name: id_num
+          in: path
+          required: true
+          description: "ID del material a actualitzar"
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Material"
+      responses:
+        "200":
+          description: "Material actualitzat correctament"
+        "404":
+          description: "Material no trobat"
+
+    delete:
+      summary: "Eliminar un material per ID"
+      description: "Elimina un material de la base de dades."
+      parameters:
+        - name: id_num
+          in: path
+          required: true
+          description: "ID del material a eliminar"
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "Material eliminat correctament"
+        "404":
+          description: "Material no trobat"
+  /materials/name/{name}:
+    get:
+      summary: "Obtenir un material per nom"
+      description: "Retorna la informació d'un material específic basant-se en el seu nom."
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "Nom del material a buscar"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Material trobat"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Material"
+        "404":
+          description: "Material no trobat"  
   /monsters:
     get:
       summary: "Obtenir tots els monstres"
@@ -99,6 +211,37 @@ paths:
 
 components:
   schemas:
+    Material:
+      type: object
+      properties:
+        id_num:
+          type: integer
+          example: 168
+        name:
+          type: string
+          example: "Durian Vivaz"
+        category:
+          type: string
+          example: "materiales"
+        common_locations:
+          type: array
+          items:
+            type: string
+          example: ["Necluda Occidental",
+              "Praderas de Farone"]
+        cooking_effect:
+          type: string
+          example: "Corazones extra"       
+        description:
+          type: string
+          example: "El fuerte olor de esta fruta le ha ganado el apodo de \"rey de las frutas\". Ofrece inmensos poderes restauradores; los platos cocinados con ella aumentarán temporalmente tus corazones máximos."
+        hearts_recovered:
+          type: integer
+          example: 3  
+        image:
+          type: string
+          format: uri
+          example: "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/hearty_durian/image"
     Monster:
       type: object
       properties:
