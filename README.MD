@@ -11,6 +11,7 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
   - [🐳 Instal·lació amb Docker](#-installació-amb-docker)
     - [🔧 Requisits](#-requisits)
     - [📖 Instruccions](#-instruccions)
+    - [⬇️ Actualització](#️-actualització)
   - [💻 Instal·lació en local](#-installació-en-local)
     - [🔧 Requisits](#-requisits-1)
     - [📖 Instruccions](#-instruccions-1)
@@ -39,8 +40,8 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
 
 1. Clona el repositori:
    ```bash
-   git clone https://github.com/el-teu-usuari/zelda-botw-api.git
-   cd zelda-botw-api
+   git clone https://github.com/jselga/APIRestFullZelda.git
+   cd APIRestFullZelda/
    ```
 2. Executa docker compose: 
     ```bash 
@@ -48,15 +49,15 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
     ```
     *El modificador --build només cal quan hi hagi canvis en el codi
 3. L’API estarà disponible a http://localhost:3001
-4. Si tens problemes amb l'execució de docker pot ser que tinguis el port ocupat, assegura't que no tens una altra instancia del projecte funcionant amb 
+4. Si tens problemes amb l'execució de docker pot ser que tinguis el port ocupat, assegura't que no tens una altra instancia del projecte funcionant amb: 
     ```bash 
     docker ps
     ```
-5. Atura els contenidors corresponents amb 
+5. Atura els contenidors corresponents amb: 
     ```bash
     docker stop <nomdelcontenidor> 
     ```
-6. Revisa el fitxer .env per evitar conflictes de ports
+6. Revisa el fitxer .env per evitar conflictes de ports: 
    ```bash
    API_EXT_PORT=3001
    MONGO_EXT_PORT=27018
@@ -65,16 +66,26 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
     ```bash
     docker compose stop
     ```
-8. Comprova si hi ha canvis al repositori:
+### ⬇️ Actualització    
+1. Comprova si hi ha canvis al repositori:
+    ```bash
+    git fetch origin master
+    ```
+2. Assegura't que els contenidors anteriors estan aturats, eliminats: 
+    ```bash
+    docker compose down --volumes
+    ``` 
+    *el modificador --volumes elimina el volum de persistència de dades en cas que volguem la BBDD actualitzada amb la del repositori
+        [🧠 Més detalls tècnics](#-gestió-del-backup-i-persistència-de-dades)
+3. Descarrega les actualitzacions del repositori:
     ```bash
     git pull origin master
     ```
-9. Si vols restablir la base de dades amb la còpia de seguretat i assegurar-te que el codi està actualitzat:
+4. Executa el docker-compose de nou reconstruint la imatge de l'API:
     ```bash
-    docker compose down --volumes
     docker compose up --build
     ```
-    [🧠 Més detalls tècnics](#-gestió-del-backup-i-persistència-de-dades)
+---
 ## 💻 Instal·lació en local
 ### 🔧 Requisits
 - [Mongo](https://www.mongodb.com/docs/manual/administration/install-on-linux/)
