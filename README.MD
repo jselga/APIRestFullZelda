@@ -74,7 +74,7 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
     docker compose down --volumes
     docker compose up --build
     ```
-    [🧠 Més detalls tècnics](#més-detalls-tècnics)
+    [🧠 Més detalls tècnics](#-gestió-del-backup-i-persistència-de-dades)
 ## 💻 Instal·lació en local
 ### 🔧 Requisits
 - [Mongo](https://www.mongodb.com/docs/manual/administration/install-on-linux/)
