@@ -1,0 +1,24 @@
+# Node modules (s’instal·len dins del contenidor)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Fitxers de configuració
+
+# Logs
+logs
+*.log
+
+# Fitxers del sistema o de l’editor
+.DS_Store
+.vscode/
+.idea/
+
+# Dades de Mongo (no calen dins del contenidor)
+# dump/
+# backup/
+# *.bson
+# *.json
+
+# Test / coverage (si aplica)
+coverage/

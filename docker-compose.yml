@@ -11,11 +11,24 @@ services:
     volumes:
       - mongo_data:/data/db
       - ./backup:/backup
-    command: ["/bin/bash", "-c", "mongod --bind_ip_all --fork --logpath /var/log/mongodb.log && mongorestore --db zelda_botw /backup/zelda_botw && tail -f /dev/null"]
+    command: >
+      /bin/bash -c "
+        mongod --bind_ip_all --fork --logpath /var/log/mongodb.log &&
+        if [ ! -f /data/db/.restored ]; then
+          echo '🗄️ Restaurant backup de zelda_botw...';
+          mongorestore --db zelda_botw /backup/zelda_botw;
+          touch /data/db/.restored;
+        else
+          echo '✅ Base de dades existent: no es restaura backup';
+        fi &&
+        tail -f /dev/null
+      "
     restart: always
 
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: api_zelda
     networks:
       - zelda_network
