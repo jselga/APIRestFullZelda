@@ -6,19 +6,19 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
 
 ## 📁 Contingut
 - [Zelda BOTW API (Materials i Monstres)](#zelda-botw-api-materials-i-monstres)
-  - [📁 Contingut](#contingut)
-  - [✨ Característiques](#característiques)
-  - [🐳 Instal·lació amb Docker](#installació-amb-docker)
-    - [🔧 Requisits](#requisits)
-    - [▶️ Instruccions](#instruccions)
-  - [💻 Instal·lació en local](#installació-en-local)
-    - [🔧 Requisits:](#requisits)
-    - [▶️ Instruccions](#instruccions)
-  - [🧠 Gestió del backup i persistència de dades](#gestió-del-backup-i-persistència-de-dades)
-    - [💾 Si vols **conservar els canvis** a la base de dades](#si-vols-conservar-els-canvis-a-la-base-de-dades)
-    - [🧨 Si vols **restaurar el backup original**](#si-vols-restaurar-el-backup-original)
-    - [📤 Si vols **exportar i conservar una còpia del teu estat actual**](#si-vols-exportar-i-conservar-una-còpia-del-teu-estat-actual)
-  - [📝 Notes](#notes)
+  - [📁 Contingut](#-contingut)
+  - [✨ Característiques](#-característiques)
+  - [🐳 Instal·lació amb Docker](#-installació-amb-docker)
+    - [🔧 Requisits](#-requisits)
+    - [📖 Instruccions](#-instruccions)
+  - [💻 Instal·lació en local](#-installació-en-local)
+    - [🔧 Requisits](#-requisits-1)
+    - [📖 Instruccions](#-instruccions-1)
+  - [🧠 Gestió del backup i persistència de dades](#-gestió-del-backup-i-persistència-de-dades)
+    - [💾 Si vols **conservar els canvis** a la base de dades](#-si-vols-conservar-els-canvis-a-la-base-de-dades)
+    - [🧨 Si vols **restaurar el backup original**](#-si-vols-restaurar-el-backup-original)
+    - [📤 Si vols **exportar i conservar una còpia del teu estat actual**](#-si-vols-exportar-i-conservar-una-còpia-del-teu-estat-actual)
+  - [📝 Notes](#-notes)
 
 ## ✨ Característiques
 - Dades emmagatzemades a MongoDB
@@ -35,7 +35,7 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-### ▶️ Instruccions
+### 📖 Instruccions
 
 1. Clona el repositori:
    ```bash
@@ -76,10 +76,10 @@ Aquest projecte proporciona una API RESTful per consultar i gestionar informaci�
     ```
     [🧠 Més detalls tècnics](#més-detalls-tècnics)
 ## 💻 Instal·lació en local
-### 🔧 Requisits:
+### 🔧 Requisits
 - [Mongo](https://www.mongodb.com/docs/manual/administration/install-on-linux/)
 - [Node.js v20+](https://nodejs.org/en/download)
-### ▶️ Instruccions
+### 📖 Instruccions
 1. Assegura’t que el servei de MongoDB està actiu:
    ```bash
    sudo systemctl start mongod
