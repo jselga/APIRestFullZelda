@@ -17,6 +17,8 @@ paths:
   /materials:
     get:
       summary: "Obtenir tots els materials"
+      tags:
+        - 🍎 Materials
       description: "Retorna una llista de tots els materials disponibles a la base de dades."
       responses:
         "200":
@@ -30,6 +32,8 @@ paths:
 
     post:
       summary: "Crear un nou material"
+      tags:
+        - 🍎 Materials
       description: "Afegeix un nou material a la base de dades."
       requestBody:
         required: true
@@ -46,6 +50,8 @@ paths:
   /materials/{id_num}:
     get:
       summary: "Obtenir un material per ID"
+      tags:
+        - 🍎 Materials
       description: "Retorna la informació d'un material específic basant-se en el seu id_num."
       parameters:
         - name: id_num
@@ -66,6 +72,8 @@ paths:
 
     put:
       summary: "Actualitzar un material per ID"
+      tags:
+        - 🍎 Materials
       description: "Modifica la informació d'un material existent."
       parameters:
         - name: id_num
@@ -88,6 +96,8 @@ paths:
 
     delete:
       summary: "Eliminar un material per ID"
+      tags:
+        - 🍎 Materials
       description: "Elimina un material de la base de dades."
       parameters:
         - name: id_num
@@ -104,6 +114,8 @@ paths:
   /materials/name/{name}:
     get:
       summary: "Obtenir un material per nom"
+      tags:
+        - 🍎 Materials
       description: "Retorna la informació d'un material específic basant-se en el seu nom."
       parameters:
         - name: name
@@ -124,6 +136,8 @@ paths:
   /monsters:
     get:
       summary: "Obtenir tots els monstres"
+      tags:
+        - 💀 Monsters
       description: "Retorna una llista de tots els monstres disponibles a la base de dades."
       responses:
         "200":
@@ -137,6 +151,8 @@ paths:
 
     post:
       summary: "Crear un nou monstre"
+      tags:
+        - 💀 Monsters
       description: "Afegeix un nou monstre a la base de dades."
       requestBody:
         required: true
@@ -153,6 +169,8 @@ paths:
   /monsters/{id_num}:
     get:
       summary: "Obtenir un monstre per ID"
+      tags:
+        - 💀 Monsters  
       description: "Retorna la informació d'un monstre específic basant-se en el seu id_num."
       parameters:
         - name: id_num
@@ -173,6 +191,8 @@ paths:
 
     put:
       summary: "Actualitzar un monstre per ID"
+      tags:
+        - 💀 Monsters
       description: "Modifica la informació d'un monstre existent."
       parameters:
         - name: id_num
@@ -195,6 +215,8 @@ paths:
 
     delete:
       summary: "Eliminar un monstre per ID"
+      tags:
+        - 💀 Monsters
       description: "Elimina un monstre de la base de dades."
       parameters:
         - name: id_num
@@ -208,6 +230,62 @@ paths:
           description: "Monstre eliminat correctament"
         "404":
           description: "Monstre no trobat"
+
+  /votes:
+    get:
+      summary: Obtenir el nombre total de vots per id_num
+      tags:
+        - 👍 Votes
+      responses:
+        '200':
+          description: Llista de vots totals per cada ítem votat
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id_num:
+                      type: integer
+                      example: 167
+                    total:
+                      type: integer
+                      example: 10
+        '500':
+          description: Error del servidor
+
+    post:
+          summary: Crear un nou vot
+          tags:
+            - 👍 Votes
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    - id_num
+                    - user_id
+                    - value
+                  properties:
+                    id_num:
+                      type: integer
+                      example: 119
+                    user_id:
+                      type: string
+                      format: uuid
+                      example: 84523a48-2c6a-49b5-92d4-8a72b8c3e847
+                    value:
+                      type: integer
+
+                      example: 1
+          responses:
+            '201':
+              description: Vot creat correctament
+            '400':
+              description: Error de validació o petició incorrecta
 
 components:
   schemas:
@@ -271,3 +349,16 @@ components:
           type: string
           format: uri
           example: "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/electric_lizalfos/image"
+    Vote:
+      type: object
+      properties:
+        id_num:
+          type: integer
+          example: 119
+        user_id:
+          type: string
+          format: uuid
+          example: 84523a48-2c6a-49b5-92d4-8a72b8c3e847
+        value:
+          type: integer
+          example: 1
