@@ -6,6 +6,7 @@ const router = express.Router();
 const msgError404 = "Material no encontrado";
 const msgErrorSrv = "Error del servidor";
 const msgOkDelete ="Material eliminado correctamente";
+const msgErrorCreate= "Error al crear material";
 
 router.get("/", async (req, res) => {
     try {
@@ -50,7 +51,11 @@ router.post("/", async (req, res) => {
         const resposta = await MaterialModel.create(body);
         res.status(201).json(resposta);
     } catch (error) {
-        res.status(500).json({ message: msgErrorSrv, error });
+        if (error.name === 'ValidationError' || error.code === 11000) {
+            res.status(400).json({message: msgErrorCreate,error });
+          }else{
+            res.status(500).json({message: msgErrorSrv, error });
+          }
     }
  
 

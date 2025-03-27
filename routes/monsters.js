@@ -34,7 +34,13 @@ router.post("/", async (req, res) => {
     const newMonster = await MonsterModel.create(req.body);
     res.status(201).json(newMonster);
   } catch (error) {
-    res.status(400).json({ error: msgErrorCreate });
+    if (error.name === 'ValidationError' || error.code === 11000) {
+      res.status(400).json({message: msgErrorCreate,error });
+    }else{
+      res.status(500).json({message: msgErrorSrv, error });
+    }
+    
+    
   }
 });
 
