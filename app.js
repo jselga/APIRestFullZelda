@@ -1,4 +1,9 @@
 require('dotenv').config();
+const path= require('path');
+// import { fileURLToPath } from 'url';
+// const __filename=fileURLToPath(import.meta.url);
+// const __dirname=path.dirname(__filename);
+
 
 const fs = require("fs");
 const yaml = require("js-yaml");
@@ -16,6 +21,7 @@ const cors = require('cors')
 
 const swaggerDocument = yaml.load(fs.readFileSync("./swagger.yaml", "utf8"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(cors());
 app.use(express.json());
 
