@@ -81,10 +81,43 @@ router.put("/:id_num", async (req, res) => {
     }
 })
 
+router.put("/db/:id", async (req, res) => {
+    try {
+        const body = req.body;
+        const id = req.params.id;
+        const resposta = await MaterialModel.findOneAndUpdate(
+            { _id: id },
+            { $set: body },
+            { new: true, runValidators: true }
+        )
+        if (!resposta) {
+            return res.status(404).json({ message: msgError404 });
+        }
+        res.send(resposta);
+    } catch (error) {
+        res.status(500).json({ message: msgErrorSrv });
+    }
+})
+
+
 router.delete("/:id_num", async (req, res) => {
     try {
         const idn = req.params.id_num;
         const resposta = await MaterialModel.findOneAndDelete({ id_num: idn });
+
+        if (!resposta) {
+            return res.status(404).json({ message: msgError404 });
+        }
+
+        res.json({ message: msgOkDelete });
+    } catch (error) {
+        res.status(500).json({ message: msgErrorSrv, error });
+    }
+});
+router.delete("/db/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const resposta = await MaterialModel.findOneAndDelete({ _id: id });
 
         if (!resposta) {
             return res.status(404).json({ message: msgError404 });
