@@ -29,12 +29,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api_zelda
+    # container_name: api_zelda
     networks:
       - zelda_network
-    volumes:
-     - .:/app 
-     - /app/node_modules 
     ports:
       - "${API_EXT_PORT}:${API_PORT}"
     depends_on:
